@@ -1,4 +1,4 @@
-import { Events, type Client } from 'discord.js';
+import { type ChatInputCommandInteraction, Events, type Client } from 'discord.js';
 import type { Command } from '../commands/index.js';
 import type { Event } from '../events/index.js';
 
@@ -14,7 +14,7 @@ export function registerEvents(commands: Map<string, Command>, events: Event[], 
 					throw new Error(`Command '${interaction.commandName}' not found.`);
 				}
 
-				await command.execute(interaction);
+				await command.execute(interaction as ChatInputCommandInteraction);
 			}
 		},
 	};
